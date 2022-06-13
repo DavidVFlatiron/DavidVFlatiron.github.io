@@ -1,8 +1,9 @@
 
 let postsContainer = document.querySelector(".posts-container");
 
-function createPost(coin){
+function createPost(coin,number){
     let post = document.createElement("div");
+    post.setAttribute('id',`coin: ${number}`)
     post.setAttribute('class',"coin")
     let coinName = document.createElement("p");
     coinName.innerText = `Coin: ${coin.name}`;
@@ -10,7 +11,12 @@ function createPost(coin){
     minimumSize.innerText = `Minimum Size: ${coin.min_size}`;
     post.append(coinName);
     post.append(minimumSize);
+    let deleteButton = document.createElement('button');
+    deleteButton.innerText = 'delete';
+    post.append(deleteButton);
+    deleteButton.addEventListener('click',(e)=>{e.preventDefault(); post.remove()});
     postsContainer.append(post);
+
 }
 
 
@@ -30,7 +36,7 @@ function retrieveData() {
 
 async function showCoinsUnsorted(){
     let coins = await retrieveData();
-    coins.map((index,key)=>createPost(index));
+    coins.map((index,key)=>createPost(index,key));
 };
 
 showCoinsUnsorted();
@@ -46,7 +52,7 @@ async function showCoinsLowToHigh(){
     coins.sort(function compareNumbers(a, b) {
         return a.min_size - b.min_size;
     });
-    coins.map((index,key)=>createPost(index));
+    coins.map((index,key)=>createPost(index,key));
 };
 
 async function showCoinsHighToLow(){
@@ -55,7 +61,7 @@ async function showCoinsHighToLow(){
     coins.sort(function compareNumbers(a, b) {
         return b.min_size - a.min_size;
     });
-    coins.map((index,key)=>createPost(index));
+    coins.map((index,key)=>createPost(index,key));
 };
 
 
@@ -72,3 +78,14 @@ function darkModeToggle(){
         button.innerText="Off"
     }
 }
+
+let counterButton = document.querySelector("#counter");
+let countValue = document.querySelector('#count-value');
+
+let count = 0
+function increment(e){
+    count++;
+    countValue.innerText = count;
+    console.log(count);
+}
+
