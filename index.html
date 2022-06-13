@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="node.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>The Coin Castle</title>
+</head>
+<body>
+    <div id="body" class="body-light">
+    <header>
+        <h1>The Coin Castle </h1>
+        <div class="dark-mode">
+            <p>Dark Mode: </p>
+            <button id="dark-mode-toggle" onclick="darkModeToggle()">On</button>
+        </div>
+         
+    </header> 
+    <h2>Coins: </h2>
+    <div>
+        Sort : 
+        <button onclick="showCoinsLowToHigh()">Low to High</button>
+        <button onclick="showCoinsHighToLow()">High to Low</button>
+    </div>
+    <div class="posts-container">
+    </div>
+    </div>
+</body>
+</html>
